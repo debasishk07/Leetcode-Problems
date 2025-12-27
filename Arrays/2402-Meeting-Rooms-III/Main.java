@@ -4,8 +4,8 @@ class Solution {
     public int mostBooked(int n, int[][] meetings) {
         Arrays.sort(meetings, (a, b) -> a[0] - b[0]);
 
-        int[] count = new int[n]; // meetings handled per room
-        long[] timer = new long[n]; // when each room becomes free
+        int[] count = new int[n];      // number of meetings per room
+        long[] timer = new long[n];    // when each room becomes free
 
         for (int[] meeting : meetings) {
             long start = meeting[0];
@@ -46,5 +46,21 @@ class Solution {
         }
 
         return resultRoom;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Example 1
+        int n1 = 2;
+        int[][] meetings1 = {{0,10},{1,5},{2,7},{3,4}};
+        System.out.println("Output: " + solution.mostBooked(n1, meetings1)); // Expected: 0
+
+        // Example 2
+        int n2 = 3;
+        int[][] meetings2 = {{1,20},{2,10},{3,5},{4,9},{6,8}};
+        System.out.println("Output: " + solution.mostBooked(n2, meetings2)); // Expected: 1
     }
 }
